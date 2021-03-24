@@ -157,9 +157,10 @@ public class Client implements History {
         String st = "";
         int lines = 0;
         if (history.exists() && history.canRead()) {
-            BufferedReader reader = new BufferedReader(new FileReader(history));
             BufferedReader count = new BufferedReader(new FileReader(history));
             lines = (int) count.lines().count();
+
+            BufferedReader reader = new BufferedReader(new FileReader(history));
 
             if ( lines > 0) {
                 for (int i = 0; i < lines; i++) {
@@ -174,6 +175,8 @@ public class Client implements History {
 
                 }
             }
+            reader.close();
+            count.close();
         }
     }
 
